@@ -188,7 +188,6 @@ index += """
       <div class="cards" style="margin-top:28px">
         <div class="card"><div class="num">272</div><p>demonstration episodes, 66k frames, paired egocentric RGB-D and full-body motion capture</p></div>
         <div class="card"><div class="num">29 DoF</div><p>whole-body joint targets plus root motion, predicted directly instead of a 2D twist</p></div>
-        <div class="card"><div class="num">97.5%</div><p>success over 40 hardware trials on a Unitree G1, deployed zero-shot from the learned policy</p></div>
       </div>
     </div>
   </section>
@@ -249,20 +248,6 @@ index += """
         <figcaption><b>Whole-body social behaviours on hardware.</b> Each coloured group is one encounter type on the Unitree G1, read left to right in time: passing in a wide corridor, an occluded intersection, overtaking around an obstacle, and overtaking a slower walker. The two panels at right expand the intersection into the two responses the policy produces there &mdash; yielding by default when the pedestrian appears, and reading the person's motion as an invitation to proceed.</figcaption>
       </figure>
 
-      <h3 style="margin-top:40px">Hardware results</h3>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Scenario</th><th>Success (%) &uarr;</th><th>Min. clearance (m) &uarr;</th><th>Contacts &darr;</th></tr></thead>
-          <tbody>
-            <tr><td>Corridor</td><td>100</td><td>0.31 &plusmn; 0.09</td><td>0.2 &plusmn; 0.4</td></tr>
-            <tr><td>Doorway</td><td>100</td><td>0.29 &plusmn; 0.07</td><td>0.2 &plusmn; 0.4</td></tr>
-            <tr><td>Intersection</td><td>90</td><td>0.47 &plusmn; 0.12</td><td>0</td></tr>
-            <tr><td>Overtake</td><td>100</td><td>0.33 &plusmn; 0.15</td><td>0</td></tr>
-            <tr class="ours"><td>Mean</td><td>97.5</td><td>0.35 &plusmn; 0.21</td><td>0.1 &plusmn; 0.3</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="caption">10 trials per scenario on the Unitree G1, alternating the starting positions of both the robot and the pedestrian. The velocity-control comparison is not repeated on hardware: the contact forces it produces in simulation are not ones we were willing to reproduce beside a person.</p>
     </div>
   </section>
 
@@ -276,25 +261,13 @@ index += """
       </figure>
 
 
-      <div class="video-grid two" style="margin-top:36px">
-        <div>
-          <div class="vstage" style="--ar:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)">
-            <video controls muted loop playsinline preload="none" poster="static/videos/sim/sim_corridor_ours.jpg" src="static/videos/sim/sim_corridor_ours.mp4"></video>
-          </div>
-          <p class="caption"><b>MINGLE in the simulated corridor.</b> The policy rotates its torso to make room rather than holding the centre line until the last moment.</p>
+      <div style="margin-top:36px;max-width:760px">
+        <div class="vstage" style="--ar:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)">
+          <video controls muted loop playsinline preload="none" poster="static/videos/sim/sim_corridor_ours.jpg" src="static/videos/sim/sim_corridor_ours.mp4"></video>
         </div>
-        <div>
-          <figure class="figure">
-            <img src="static/images/corridor_clearance.jpg" alt="Top-down trajectories in the corridor encounter, coloured by time.">
-            <figcaption><b>Top-down trajectories in the corridor.</b> Line style identifies the agent, colour encodes time. SICNav holds the centre and turns sharply at the last moment; the velocity tracker overshoots coming back off the wall. MINGLE leaves social space early and stays collision-free.</figcaption>
-          </figure>
-        </div>
+        <p class="caption"><b>MINGLE in the simulated corridor.</b> The policy rotates its torso to make room rather than holding the centre line until the last moment.</p>
       </div>
 
-      <figure class="figure" style="margin-top:36px">
-        <img src="static/images/sim_comparison.jpg" alt="Qualitative comparison in the simulated corridor encounter, one method per row, with red ellipses marking collisions.">
-        <figcaption><b>Qualitative comparison in the simulated corridor.</b> Each row is one method in the same head-on encounter; red ellipses mark frames with contact. Both velocity-controlled robots make contact while passing, whereas MINGLE turns its body to make room and passes cleanly &mdash; the gain comes from whole-body execution, not from the planned path alone.</figcaption>
-      </figure>
 
     </div>
   </section>
