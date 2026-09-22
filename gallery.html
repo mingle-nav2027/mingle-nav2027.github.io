@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MINGLE — video gallery</title>
+<meta name="description" content="All 17 Unitree G1 hardware clips from MINGLE, each with third-person, onboard dashboard, egocentric RGB-D and BEV occupancy views.">
+<meta property="og:title" content="MINGLE — video gallery">
+<meta property="og:description" content="All 17 Unitree G1 hardware clips from MINGLE, each with third-person, onboard dashboard, egocentric RGB-D and BEV occupancy views.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://mingle-nav2027.github.io/static/images/teaser.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#129302;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">MINGLE</a>
+      <div class="nav-links">
+        <a href="index.html">Overview</a>
+        <a href="index.html#method">Method</a>
+        <a href="index.html#hardware">Real robot</a>
+        <a href="gallery.html">All clips</a>
+        <a href="static/paper/MINGLE_ICRA2027.pdf">Paper</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" style="padding-bottom:12px">
+    <div class="wrap narrow">
+      <h1 style="font-size:clamp(28px,4.4vw,42px)">Video gallery</h1>
+      <p class="subtitle" style="font-size:clamp(17px,2.1vw,21px)">Every hardware clip we recorded &mdash; 17 encounters on the Unitree&nbsp;G1, successes and failures alike, each with five synchronized views.</p>
+    </div>
+  </header>
+
+  <section style="border-top:none;padding-top:8px">
+    <div class="wrap">
+      <div class="filters" role="group" aria-label="Filter clips">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="corridor" aria-pressed="false">Corridor</button>
+        <button type="button" data-filter="turn" aria-pressed="false">Turns</button>
+        <button type="button" data-filter="intersection" aria-pressed="false">Intersection</button>
+        <button type="button" data-filter="overtake_obs" aria-pressed="false">Overtake (obstacle)</button>
+        <button type="button" data-filter="overtake_slow" aria-pressed="false">Overtake (slow walker)</button>
+        <button type="button" data-filter="adversarial" aria-pressed="false">Adversarial</button>
+        <button type="button" data-filter="success" aria-pressed="false">Successes</button>
+        <button type="button" data-filter="failure" aria-pressed="false">Failures</button>
+      </div>
+      <p class="caption" style="margin:-16px 0 26px">
+        <b>Views.</b> <i>Third-person</i> &mdash; the external recording of the trial.
+        <i>Onboard dashboard</i> &mdash; egocentric streams with the policy's BEV maps and live telemetry.
+        <i>Ego RGB</i> / <i>ego depth</i> &mdash; the chest-mounted ZED 2i streams.
+        <i>BEV occupancy</i> &mdash; the history occupancy map the policy is conditioned on.
+        The onboard views cover the interaction window, so they are shorter than the third-person recording.
+      </p>
+
+      <div data-group="corridor">
+        <h2 class="group-title">Head-on corridor encounters <span class="count">4 clips</span></h2>
+        <p class="group-sub">Two bodies in a passage barely wider than both. The policy picks a side early and shapes the body to fit the room that is left.</p>
+        <div class="video-grid">
+      <article class="vcard" data-base="static/videos/corridor_successful_trial_17m_01" data-tags="corridor success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/corridor_successful_trial_17m_01/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Head-on pass, 1.7 m corridor</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">A clean head-on encounter in the wider corridor. The robot commits to one side well before the pedestrian arrives and holds that offset through the pass.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/corridor_half_successful_trial_12m_01" data-tags="corridor partial">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/corridor_half_successful_trial_12m_01/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Head-on pass, 1.2 m corridor (trial 1)</h3>
+            <span class="tag partial">Partial</span>
+          </div>
+          <p class="vdesc">The same behaviour in a passage barely wider than two bodies. Logged as a partial success: the robot gets through, but with far less room to spare.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/corridor_half_successful_trial_12m_02" data-tags="corridor partial">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/corridor_half_successful_trial_12m_02/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Head-on pass, 1.2 m corridor (trial 2)</h3>
+            <span class="tag partial">Partial</span>
+          </div>
+          <p class="vdesc">A second run of the 1.2 m head-on encounter with a different starting offset, again logged as a partial success.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/corridor_failed_trial_12m_01" data-tags="corridor failure">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/corridor_failed_trial_12m_01/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Head-on pass, 1.2 m corridor — failure</h3>
+            <span class="tag failure">Failure</span>
+          </div>
+          <p class="vdesc">A failed run in the tightest corridor. Shown as recorded: at this width the policy does not always resolve the encounter.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+        </div>
+      </div>
+
+      <div data-group="turn">
+        <h2 class="group-title">Corridor turns <span class="count">2 clips</span></h2>
+        <p class="group-sub">Turning while a pedestrian approaches — where a general velocity tracker overshoots into the wall at comparable speed.</p>
+        <div class="video-grid">
+      <article class="vcard" data-base="static/videos/left_turn_corridor" data-tags="turn success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/left_turn_corridor/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Left turn in a corridor</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">A turn taken while the pedestrian approaches, the case where a velocity tracker tends to overshoot into the wall.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/corridorr_left_turn_2" data-tags="turn success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/corridorr_left_turn_2/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Left turn in a corridor (trial 2)</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">A second corridor turn, entered at a different speed and heading.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+        </div>
+      </div>
+
+      <div data-group="intersection">
+        <h2 class="group-title">Occluded intersections <span class="count">4 clips</span></h2>
+        <p class="group-sub">A side corridor hidden by a corner until the robot is about 3 m out. The same scene produces two different social responses.</p>
+        <div class="video-grid">
+      <article class="vcard" data-base="static/videos/intersection_robot_yield" data-tags="intersection success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/intersection_robot_yield/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Occluded intersection — robot yields</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">The side corridor is hidden by the corner until late. When the pedestrian appears the robot yields by default and lets them cross first.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/intersection_human_yield" data-tags="intersection success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/intersection_human_yield/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Occluded intersection — human waves the robot through</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">The same blind corner, but the person stops and motions the robot on. The policy reads that whole-body motion and resumes walking, which a 2D position alone would not convey.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/intersection_failed" data-tags="intersection failure">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/intersection_failed/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Occluded intersection — failure</h3>
+            <span class="tag failure">Failure</span>
+          </div>
+          <p class="vdesc">A failed intersection run. The corner leaves little time between first sight of the pedestrian and the crossing point.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/intersection_failed_2" data-tags="intersection failure">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/intersection_failed_2/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Occluded intersection — failure (long run)</h3>
+            <span class="tag failure">Failure</span>
+          </div>
+          <p class="vdesc">A longer failed run at the blind corner, kept uncut so the full approach and recovery are visible.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+        </div>
+      </div>
+
+      <div data-group="overtake_obs">
+        <h2 class="group-title">Overtaking around an obstacle <span class="count">4 clips</span></h2>
+        <p class="group-sub">A lane narrowed by furniture, with a pedestrian to get past inside the remaining space.</p>
+        <div class="video-grid">
+      <article class="vcard" data-base="static/videos/overtake_obstacle_human_front" data-tags="overtake_obs success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/overtake_obstacle_human_front/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Overtake past an obstacle, person ahead</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">The lane is narrowed by an obstacle with the pedestrian ahead of the robot. It closes on the walker and passes on the free side, drawing its arms in as the gap tightens.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/overtake_obstacle_human_back" data-tags="overtake_obs success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/overtake_obstacle_human_back/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Overtake past an obstacle, person behind</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">The same narrowed lane with the person entering from behind the robot.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/overtake_obstacle_spacious" data-tags="overtake_obs success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/overtake_obstacle_spacious/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Overtake past an obstacle, wide lane</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">The obstacle with room to spare on either side — the easier end of the overtaking family.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/overtake_obstacle_very_long" data-tags="overtake_obs success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/overtake_obstacle_very_long/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Overtake past an obstacle, long corridor</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">An extended run down the corridor, with the robot closing, passing and settling back onto its line.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+        </div>
+      </div>
+
+      <div data-group="overtake_slow">
+        <h2 class="group-title">Overtaking a slower walker <span class="count">2 clips</span></h2>
+        <p class="group-sub">A pedestrian moving the same way at roughly 0.3 m/s, so the robot has to close and choose a moment to pass.</p>
+        <div class="video-grid">
+      <article class="vcard" data-base="static/videos/overtake_slow_stop_first" data-tags="overtake_slow success">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/overtake_slow_stop_first/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Overtake a slower walker</h3>
+            <span class="tag success">Success</span>
+          </div>
+          <p class="vdesc">The pedestrian walks the same way at roughly a third of the robot&#x27;s speed, so the robot must close, wait for room and then pass.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+      <article class="vcard" data-base="static/videos/overtake_slow_fail" data-tags="overtake_slow failure">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/overtake_slow_fail/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Overtake a slower walker — failure</h3>
+            <span class="tag failure">Failure</span>
+          </div>
+          <p class="vdesc">A failed overtake of a slow walker, included so the limits of the policy are visible alongside the successes.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+        </div>
+      </div>
+
+      <div data-group="adversarial">
+        <h2 class="group-title">Adversarial and stress tests <span class="count">1 clip</span></h2>
+        <p class="group-sub">Encounters outside the evaluation protocol, where the person actively works against the robot.</p>
+        <div class="video-grid">
+      <article class="vcard" data-base="static/videos/adversarial_corridor_blocking" data-tags="adversarial stress">
+        <div class="vstage">
+          <video muted loop playsinline preload="none" controls poster="static/videos/adversarial_corridor_blocking/third.jpg"></video>
+          <span class="loading">loading</span>
+        </div>
+        <div class="vbody">
+          <div class="vhead">
+            <h3 class="vtitle">Adversarial corridor blocking</h3>
+            <span class="tag stress">Stress test</span>
+          </div>
+          <p class="vdesc">A stress test outside the evaluation protocol: the person repeatedly steps into the robot&#x27;s path instead of cooperating.</p>
+          <div class="views" role="group" aria-label="Camera view">
+            <button type="button" data-view="third" aria-pressed="true">Third-person</button>
+            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
+            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
+            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
+            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+          </div>
+        </div>
+      </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>MINGLE &middot; whole-body humanoid social navigation. Page and media are part of an anonymous submission.</p>
+      <p><a href="index.html">Overview</a> &middot; <a href="gallery.html">Video gallery</a> &middot; <a href="static/paper/MINGLE_ICRA2027.pdf">Paper (PDF)</a></p>
+    </div>
+  </footer>
+  <script src="static/js/main.js"></script>
+</body>
+</html>
