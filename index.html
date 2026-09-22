@@ -26,7 +26,6 @@
         <a href="#hardware">Real robot</a>
         <a href="#simulation">Simulation</a>
         <a href="gallery.html">All clips</a>
-        <a href="#bibtex">BibTeX</a>
       </div>
     </div>
   </nav>
@@ -263,24 +262,12 @@
   <section id="simulation" class="alt">
     <div class="wrap">
       <h2>Simulation</h2>
-      <p class="lede">Four scenarios built from primitive geometry, 50 paired trials each, identical seeds across methods.</p>
+      <p class="lede">The four encounter types, rebuilt from primitive geometry so the same situations can be replayed in the simulator.</p>
       <figure class="figure">
         <img src="static/images/scenarios.jpg" alt="Four simulated evaluation scenarios shown top-down: a 1.5 m corridor, a 1.5 m overtake, a 0.7 m doorway and a 1.5 m intersection.">
         <figcaption><b>Four simulated evaluation scenarios.</b> Each panel is a top-down view labelled with its passage width; the red arrow is the pedestrian's scripted walking direction. They span a head-on corridor encounter, overtaking a slow pedestrian, a crossing at an occluded intersection, and a 0.7&nbsp;m doorway that only one of the two can pass at a time.</figcaption>
       </figure>
 
-      <div class="table-scroll" style="margin-top:36px">
-        <table>
-          <thead><tr><th>Method</th><th>Low level</th><th>Success (%) &uarr;</th><th>Human coll. &darr;</th><th>Falls &darr;</th><th>Min. clear. (m) &uarr;</th><th>Peak force (N) &darr;</th><th>Scene coll. &darr;</th><th>Distance (m) &uarr;</th></tr></thead>
-          <tbody>
-            <tr><td>SICNav</td><td>velocity</td><td>68.5</td><td>0.27</td><td>0.05</td><td>0.32 &plusmn; 0.21</td><td>937</td><td>1.06 &plusmn; 1.07</td><td>5.85 &plusmn; 1.38</td></tr>
-            <tr><td>EmoBipedNav</td><td>velocity</td><td>66.0</td><td>0.34</td><td>0</td><td>0.22 &plusmn; 0.07</td><td>762</td><td>0.37 &plusmn; 0.66</td><td>3.42 &plusmn; 0.71</td></tr>
-            <tr><td>MINGLE, velocity control</td><td>velocity</td><td>94.5</td><td>0.05</td><td>0.01</td><td>0.41 &plusmn; 0.13</td><td>1145</td><td>1.78 &plusmn; 0.87</td><td>6.29 &plusmn; 1.95</td></tr>
-            <tr class="ours"><td>MINGLE (ours)</td><td>whole-body</td><td>96.5</td><td>0.04</td><td>0</td><td>0.40 &plusmn; 0.11</td><td>174</td><td>0.40 &plusmn; 0.62</td><td>7.19 &plusmn; 1.62</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="caption">Closed-loop comparison on the G1, averaged over 50 paired trials per scenario. The velocity-control row of MINGLE isolates the interface itself: same policy, executed as a twist. What it loses is <i>how</i> the encounter is carried out &mdash; mean peak contact force is several times higher, with more scene collisions.</p>
 
       <div class="video-grid two" style="margin-top:36px">
         <div>
@@ -302,37 +289,9 @@
         <figcaption><b>Qualitative comparison in the simulated corridor.</b> Each row is one method in the same head-on encounter; red ellipses mark frames with contact. Both velocity-controlled robots make contact while passing, whereas MINGLE turns its body to make room and passes cleanly &mdash; the gain comes from whole-body execution, not from the planned path alone.</figcaption>
       </figure>
 
-      <h3 style="margin-top:44px">Ablations</h3>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Method</th><th>Success (%) &uarr;</th><th>Human coll. &darr;</th><th>Scene coll. &darr;</th><th>Min. clear. (m) &uarr;</th></tr></thead>
-          <tbody>
-            <tr class="ours"><td>MINGLE</td><td>96.5</td><td>0.04</td><td>0.40 &plusmn; 0.62</td><td>0.40 &plusmn; 0.11</td></tr>
-            <tr><td>DEPTH-CNN &mdash; raw depth instead of BEV</td><td>23.0</td><td>0.77</td><td>0.48 &plusmn; 0.77</td><td>0.17 &plusmn; 0.35</td></tr>
-            <tr><td>ACTOR-2D &mdash; 2D pedestrian position only</td><td>61.0</td><td>0.39</td><td>0.37 &plusmn; 0.51</td><td>0.24 &plusmn; 0.39</td></tr>
-            <tr><td>NO-XY &mdash; no root translation</td><td>47.5</td><td>0.53</td><td>0.86 &plusmn; 1.02</td><td>0.21 &plusmn; 0.33</td></tr>
-            <tr><td>HZ-15 &mdash; 15-frame chunks</td><td>35.5</td><td>0.65</td><td>0.15 &plusmn; 0.34</td><td>0.19 &plusmn; 0.41</td></tr>
-            <tr><td>HZ-45 &mdash; 45-frame chunks</td><td>87.5</td><td>0.13</td><td>0.35 &plusmn; 0.67</td><td>0.37 &plusmn; 0.20</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="caption">Each ablation changes exactly one field of the deployed configuration; data lists, splits, model size, diffusion process, optimizer and schedule are identical, with 75k training steps on the same 241 episodes. The BEV representation and the articulated pedestrian motion both matter far more than the model's capacity.</p>
     </div>
   </section>
 
-  <section id="bibtex">
-    <div class="wrap narrow">
-      <h2>BibTeX</h2>
-      <pre>@inproceedings{mingle2027,
-  title     = {MINGLE: Learning Whole-Body Humanoid Social Navigation from
-               Paired Egocentric Perception and Motion-Captured Actions},
-  author    = {Anonymous Authors},
-  booktitle = {Under review, IEEE International Conference on Robotics
-               and Automation (ICRA)},
-  year      = {2027}
-}</pre>
-    </div>
-  </section>
 
   <footer>
     <div class="wrap">
