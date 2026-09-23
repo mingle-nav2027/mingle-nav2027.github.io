@@ -110,7 +110,7 @@
   <section id="hardware">
     <div class="wrap">
       <h2>On the real robot</h2>
-      <p class="lede">Four interaction families on a Unitree G1, with a person walking of their own accord. Switch between the third-person camera, the onboard dashboard, and the raw egocentric streams the policy actually sees.</p>
+      <p class="lede">Four interaction families on a Unitree G1, with a person walking of their own accord. Switch between the third-person camera, the robot's first-person view, and the depth and BEV occupancy the policy actually sees.</p>
       <div class="video-grid">
       <article class="vcard" data-base="static/videos/corridor_successful_trial_17m_01" data-tags="corridor success">
         <div class="vstage">
@@ -125,10 +125,8 @@
           <p class="vdesc">A clean head-on encounter in the wider corridor. The robot commits to one side well before the pedestrian arrives and holds that offset through the pass.</p>
           <div class="views" role="group" aria-label="Camera view">
             <button type="button" data-view="third" aria-pressed="true">Third-person</button>
-            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
-            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
-            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
-            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+            <button type="button" data-view="fpv" aria-pressed="false">First-person</button>
+            <button type="button" data-view="depth_bev" aria-pressed="false">Depth + BEV</button>
           </div>
         </div>
       </article>
@@ -145,10 +143,8 @@
           <p class="vdesc">The side corridor is hidden by the corner until late. When the pedestrian appears the robot yields by default and lets them cross first.</p>
           <div class="views" role="group" aria-label="Camera view">
             <button type="button" data-view="third" aria-pressed="true">Third-person</button>
-            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
-            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
-            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
-            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+            <button type="button" data-view="fpv" aria-pressed="false">First-person</button>
+            <button type="button" data-view="depth_bev" aria-pressed="false">Depth + BEV</button>
           </div>
         </div>
       </article>
@@ -165,10 +161,8 @@
           <p class="vdesc">The same blind corner, but the person stops and motions the robot on. The policy reads that whole-body motion and resumes walking, which a 2D position alone would not convey.</p>
           <div class="views" role="group" aria-label="Camera view">
             <button type="button" data-view="third" aria-pressed="true">Third-person</button>
-            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
-            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
-            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
-            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+            <button type="button" data-view="fpv" aria-pressed="false">First-person</button>
+            <button type="button" data-view="depth_bev" aria-pressed="false">Depth + BEV</button>
           </div>
         </div>
       </article>
@@ -185,10 +179,8 @@
           <p class="vdesc">The lane is narrowed by an obstacle with the pedestrian ahead of the robot. It closes on the walker and passes on the free side, drawing its arms in as the gap tightens.</p>
           <div class="views" role="group" aria-label="Camera view">
             <button type="button" data-view="third" aria-pressed="true">Third-person</button>
-            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
-            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
-            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
-            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+            <button type="button" data-view="fpv" aria-pressed="false">First-person</button>
+            <button type="button" data-view="depth_bev" aria-pressed="false">Depth + BEV</button>
           </div>
         </div>
       </article>
@@ -205,10 +197,8 @@
           <p class="vdesc">The pedestrian walks the same way at roughly a third of the robot&#x27;s speed, so the robot must close, wait for room and then pass.</p>
           <div class="views" role="group" aria-label="Camera view">
             <button type="button" data-view="third" aria-pressed="true">Third-person</button>
-            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
-            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
-            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
-            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+            <button type="button" data-view="fpv" aria-pressed="false">First-person</button>
+            <button type="button" data-view="depth_bev" aria-pressed="false">Depth + BEV</button>
           </div>
         </div>
       </article>
@@ -225,15 +215,13 @@
           <p class="vdesc">A stress test outside the evaluation protocol: the person repeatedly steps into the robot&#x27;s path instead of cooperating.</p>
           <div class="views" role="group" aria-label="Camera view">
             <button type="button" data-view="third" aria-pressed="true">Third-person</button>
-            <button type="button" data-view="dashboard" aria-pressed="false">Onboard dashboard</button>
-            <button type="button" data-view="fpv_rgb" aria-pressed="false">Ego RGB</button>
-            <button type="button" data-view="fpv_depth" aria-pressed="false">Ego depth</button>
-            <button type="button" data-view="bev" aria-pressed="false">BEV occupancy</button>
+            <button type="button" data-view="fpv" aria-pressed="false">First-person</button>
+            <button type="button" data-view="depth_bev" aria-pressed="false">Depth + BEV</button>
           </div>
         </div>
       </article>
       </div>
-      <p class="caption" style="margin-top:20px"><b>Every clip carries five synchronized views.</b> <i>Third-person</i> is the external recording of the trial; <i>onboard dashboard</i> combines the egocentric streams with the policy's own BEV maps and telemetry; <i>ego RGB</i> and <i>ego depth</i> are the ZED 2i streams; <i>BEV occupancy</i> is the history map the policy is conditioned on. <a href="gallery.html">See all 17 clips, including the failures &rarr;</a></p>
+      <p class="caption" style="margin-top:20px"><b>Every clip carries three views.</b> <i>Third-person</i> is the external recording of the trial; <i>first-person</i> is the robot's chest-mounted ZED 2i RGB stream; <i>depth + BEV</i> shows the ZED 2i depth above the history BEV occupancy map the policy is conditioned on. <a href="gallery.html">See all 17 clips, including the failures &rarr;</a></p>
 
       <h3 style="margin-top:44px">Learned social behaviours</h3>
       <figure class="figure">

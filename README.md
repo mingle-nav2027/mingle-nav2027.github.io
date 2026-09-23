@@ -27,15 +27,13 @@ static/
     mingle_overview.mp4  # 2.5 min narrated supplementary video (+ .jpg poster)
     sim/                 # simulated corridor rollout
     <scenario>/          # one folder per hardware trial
-      third.mp4          # external camera, H.264, 540p portrait or 720p landscape
-      dashboard.mp4      # egocentric streams + BEV maps + telemetry
-      fpv_rgb.mp4        # chest-mounted ZED 2i RGB
-      fpv_depth.mp4      # ZED 2i depth
-      bev.mp4            # history BEV occupancy map the policy is conditioned on
+      third.mp4          # external camera, face-masked (masked_tps), black bars cropped
+      fpv.mp4            # chest-mounted ZED 2i RGB, face-masked (masked_fps), 568x320
+      depth_bev.mp4      # ZED 2i depth stacked above the history BEV occupancy map
       *.jpg              # poster frame for each of the above
 ```
 
-Every clip carries the same five view names, which is what `static/js/main.js` relies on:
+Every clip carries the same three view names, which is what `static/js/main.js` relies on:
 a card declares `data-base="static/videos/<scenario>"` and the view buttons swap
 `<base>/<view>.mp4` into the single `<video>` element. Clips only start loading when they
 scroll into view, and pause when they leave, so the page opens without pulling ~80 MB.
@@ -46,10 +44,12 @@ Everything here is derived from `icra27_vis/`:
 
 - **Figures** — `img_pptx_pdf/fig*/**.pdf`, rendered with
   `magick -density 220 <fig>.pdf -fuzz 2% -trim +repage -resize 2000x\> <name>.jpg`.
-- **Hardware clips** — `mingle_demo_videos/<scenario>/`. The third-person `IMG_*.MOV`
-  files were transcoded to H.264 (`-crf 28`, portrait scaled to 540 px wide, landscape to
-  1280 px, audio stripped); `fpv_rgb`, `fpv_depth`, `dashboard` and `bev` were remuxed
-  as-is with `-movflags +faststart`. Posters are single frames at 35 % of each clip.
+- **Hardware clips** — `mingle_demo_videos/<scenario>/`, using only scenarios that have
+  both `masked_tps.mp4` and `masked_fps.mp4`. Those two were cropped to their picture area
+  (`crop=480:480:186:0` for portrait third-person, none for landscape;
+  `crop=568:320:142:80` for first-person) and re-encoded with `-crf 22`, audio stripped.
+  `depth_bev` is `fpv_depth` scaled to 854x480 `vstack`ed over `bev` scaled to 854x424
+  (nearest-neighbour). Posters are single frames at 35 % of each clip.
 - **Simulation clip** — `img_pptx_pdf/fig4_sim_comparison/ours_exec30_default.mp4`.
 - **Supplementary video** — the ICRA submission video (`ICRA27_6901_VI_i.mp4`).
 
@@ -61,7 +61,7 @@ third-person recording of the same trial; they are not frame-synchronized with i
 `index.html` and `gallery.html` were generated from a small script that holds the scenario
 table (title, family, outcome, caption). Editing the HTML directly is fine — it is plain
 and self-contained. To add a clip, drop a new `static/videos/<scenario>/` folder with the
-five views plus posters and copy an existing `<article class="vcard">` block, changing
+three views plus posters and copy an existing `<article class="vcard">` block, changing
 `data-base`, `data-tags`, the title, the tag and the caption.
 
 ## Publishing

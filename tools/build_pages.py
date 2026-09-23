@@ -6,10 +6,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 VIEWS = [
     ("third", "Third-person"),
-    ("dashboard", "Onboard dashboard"),
-    ("fpv_rgb", "Ego RGB"),
-    ("fpv_depth", "Ego depth"),
-    ("bev", "BEV occupancy"),
+    ("fpv", "First-person"),
+    ("depth_bev", "Depth + BEV"),
 ]
 
 # name, title, family, outcome, description
@@ -63,7 +61,13 @@ GROUPS = [
      "A pedestrian moving the same way at roughly 0.3 m/s, so the robot has to close and choose a moment to pass."),
     ("adversarial", "Adversarial and stress tests",
      "Encounters outside the evaluation protocol, where the person actively works against the robot."),
+    ("failure", "Failure cases",
+     "Runs the policy did not resolve, kept last and shown as recorded so its limits are visible alongside the successes."),
 ]
+
+def group_of(s):
+    """Failures are pulled out of their family into one group at the end."""
+    return "failure" if s[3] == "failure" else s[2]
 
 OUTCOME_LABEL = {"success": "Success", "partial": "Partial", "failure": "Failure", "stress": "Stress test"}
 
@@ -234,13 +238,13 @@ index += """
   <section id="hardware">
     <div class="wrap">
       <h2>On the real robot</h2>
-      <p class="lede">Four interaction families on a Unitree G1, with a person walking of their own accord. Switch between the third-person camera, the onboard dashboard, and the raw egocentric streams the policy actually sees.</p>
+      <p class="lede">Four interaction families on a Unitree G1, with a person walking of their own accord. Switch between the third-person camera, the robot's first-person view, and the depth and BEV occupancy the policy actually sees.</p>
       <div class="video-grid">
 """
 index += "\n".join(card(by_name[n]) for n in FEATURED)
 index += """
       </div>
-      <p class="caption" style="margin-top:20px"><b>Every clip carries five synchronized views.</b> <i>Third-person</i> is the external recording of the trial; <i>onboard dashboard</i> combines the egocentric streams with the policy's own BEV maps and telemetry; <i>ego RGB</i> and <i>ego depth</i> are the ZED 2i streams; <i>BEV occupancy</i> is the history map the policy is conditioned on. <a href="gallery.html">See all 17 clips, including the failures &rarr;</a></p>
+      <p class="caption" style="margin-top:20px"><b>Every clip carries three views.</b> <i>Third-person</i> is the external recording of the trial; <i>first-person</i> is the robot's chest-mounted ZED 2i RGB stream; <i>depth + BEV</i> shows the ZED 2i depth above the history BEV occupancy map the policy is conditioned on. <a href="gallery.html">See all 17 clips, including the failures &rarr;</a></p>
 
       <h3 style="margin-top:44px">Learned social behaviours</h3>
       <figure class="figure">
@@ -280,7 +284,7 @@ index += FOOTER
 
 gallery = head(
     "MINGLE — video gallery",
-    "All 17 Unitree G1 hardware clips from MINGLE, each with third-person, onboard dashboard, egocentric RGB-D and BEV occupancy views.")
+    "All 17 Unitree G1 hardware clips from MINGLE, each with third-person, first-person and depth + BEV occupancy views.")
 
 gallery += nav([("index.html", "Overview"), ("index.html#method", "Method"),
                 ("index.html#hardware", "Real robot"), ("gallery.html", "All clips"),
@@ -290,7 +294,7 @@ gallery += """
   <header class="hero" style="padding-bottom:12px">
     <div class="wrap narrow">
       <h1 style="font-size:clamp(28px,4.4vw,42px)">Video gallery</h1>
-      <p class="subtitle" style="font-size:clamp(17px,2.1vw,21px)">Every hardware clip we recorded &mdash; %d encounters on the Unitree&nbsp;G1, successes and failures alike, each with five synchronized views.</p>
+      <p class="subtitle" style="font-size:clamp(17px,2.1vw,21px)">Every hardware clip we recorded &mdash; %d encounters on the Unitree&nbsp;G1, successes first and failures at the end, each with three views.</p>
     </div>
   </header>
 
@@ -309,15 +313,14 @@ gallery += """
       </div>
       <p class="caption" style="margin:-16px 0 26px">
         <b>Views.</b> <i>Third-person</i> &mdash; the external recording of the trial.
-        <i>Onboard dashboard</i> &mdash; egocentric streams with the policy's BEV maps and live telemetry.
-        <i>Ego RGB</i> / <i>ego depth</i> &mdash; the chest-mounted ZED 2i streams.
-        <i>BEV occupancy</i> &mdash; the history occupancy map the policy is conditioned on.
-        The onboard views cover the interaction window, so they are shorter than the third-person recording.
+        <i>First-person</i> &mdash; the robot's chest-mounted ZED 2i RGB stream.
+        <i>Depth + BEV</i> &mdash; the ZED 2i depth stacked above the history occupancy map the policy is conditioned on.
+        The onboard views cover the interaction window, so they can be shorter than the third-person recording.
       </p>
 """ % len(SCENARIOS)
 
 for key, title, sub in GROUPS:
-    members = [s for s in SCENARIOS if s[2] == key]
+    members = [s for s in SCENARIOS if group_of(s) == key]
     gallery += """
       <div data-group="%s">
         <h2 class="group-title">%s <span class="count">%d clip%s</span></h2>
